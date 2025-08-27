@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/IceCons/static/css/main.75f34c4c.css",
+    "main.js": "/IceCons/static/js/main.fb1ccdd9.js",
+    "index.html": "/IceCons/index.html",
+    "main.75f34c4c.css.map": "/IceCons/static/css/main.75f34c4c.css.map",
+    "main.fb1ccdd9.js.map": "/IceCons/static/js/main.fb1ccdd9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.75f34c4c.css",
+    "static/js/main.fb1ccdd9.js"
+  ]
+}
