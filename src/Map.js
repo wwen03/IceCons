@@ -40,7 +40,7 @@ const Map = () => {
     // Load AOI and ASPA GeoJSON files
     map.on('load', () => {
       // AOI (Windmill Islands Planning Area) - blue line
-      fetch('/aoi_shapefile.geojson')
+      fetch(process.env.PUBLIC_URL + '/aoi_shapefile.geojson')
       .then(response => {
         if (!response.ok) throw new Error('GeoJSON not found');
         return response.json();
@@ -68,7 +68,7 @@ const Map = () => {
       });
 
       // ASPA - red dashed line
-      fetch('/aspa.geojson')
+      fetch(process.env.PUBLIC_URL + '/aspa.geojson')
       .then(response => {
         if (!response.ok) throw new Error('ASPA GeoJSON not found');
         return response.json();
@@ -97,7 +97,7 @@ const Map = () => {
       });
       
       // Islands - simple point layer
-      fetch('/islands.geojson')
+      fetch(process.env.PUBLIC_URL + '/islands.geojson')
       .then(response => {
         if (!response.ok) throw new Error('Islands GeoJSON not found');
         return response.json();
@@ -143,7 +143,7 @@ const Map = () => {
       });
 
       // Research Stations - red house symbol
-      fetch('/research_station.geojson')
+      fetch(process.env.PUBLIC_URL + '/research_station.geojson')
       .then(response => {
         if (!response.ok) throw new Error('Research Station GeoJSON not found');
         return response.json();
