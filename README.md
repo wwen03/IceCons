@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +69,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+=======
+# IceCons
+This tool is intended solely for scientific research and expert feedback regarding conservation features and potential threats in Windmill Islands. The information presented herein is preliminary, subject to ongoing validation, and should not be interpreted as legally binding or as official policy.
+>>>>>>> 874b75e94b8e5023e63d5b8b6778e5c1beac162c
