@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/IceCons/static/css/main.e9eb89fa.css",
-    "main.js": "/IceCons/static/js/main.a0c18f3e.js",
+    "main.js": "/IceCons/static/js/main.d04c194c.js",
     "index.html": "/IceCons/index.html",
     "main.e9eb89fa.css.map": "/IceCons/static/css/main.e9eb89fa.css.map",
-    "main.a0c18f3e.js.map": "/IceCons/static/js/main.a0c18f3e.js.map"
+    "main.d04c194c.js.map": "/IceCons/static/js/main.d04c194c.js.map"
   },
   "entrypoints": [
     "static/css/main.e9eb89fa.css",
-    "static/js/main.a0c18f3e.js"
+    "static/js/main.d04c194c.js"
   ]
 }
