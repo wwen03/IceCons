@@ -1,0 +1,9 @@
+{
+"type": "FeatureCollection",
+"name": "Skiway",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "osm_id": "2418868746", "code": 5651, "fclass": "airport", "name": "Wilkins Runway" }, "geometry": { "type": "Point", "coordinates": [ 111.4858, -66.6894 ] } },
+{ "type": "Feature", "properties": { "osm_id": "5314149348", "code": 5651, "fclass": "airport", "name": "Casey Station Skiway" }, "geometry": { "type": "Point", "coordinates": [ 110.7575671, -66.2880421 ] } }
+]
+}

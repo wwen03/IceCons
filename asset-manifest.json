@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/IceCons/static/css/main.e9eb89fa.css",
-    "main.js": "/IceCons/static/js/main.d04c194c.js",
+    "main.css": "/IceCons/static/css/main.80ed62c2.css",
+    "main.js": "/IceCons/static/js/main.03bc4afb.js",
     "index.html": "/IceCons/index.html",
-    "main.e9eb89fa.css.map": "/IceCons/static/css/main.e9eb89fa.css.map",
-    "main.d04c194c.js.map": "/IceCons/static/js/main.d04c194c.js.map"
+    "main.80ed62c2.css.map": "/IceCons/static/css/main.80ed62c2.css.map",
+    "main.03bc4afb.js.map": "/IceCons/static/js/main.03bc4afb.js.map"
   },
   "entrypoints": [
-    "static/css/main.e9eb89fa.css",
-    "static/js/main.d04c194c.js"
+    "static/css/main.80ed62c2.css",
+    "static/js/main.03bc4afb.js"
   ]
 }
