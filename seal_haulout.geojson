@@ -1,0 +1,20 @@
+{
+"type": "FeatureCollection",
+"name": "seal_haulout",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "FEAT_TYPE": "Wallow", "UFI": 2985755, "Q_INFO": 884, "DATASET_ID": 179, "GAZ_ID": 0, "NAME": "B1", "DB_DATE_CR": "2011-05-04" }, "geometry": { "type": "Point", "coordinates": [ 110.555274323288756, -66.456483184702392 ] } },
+{ "type": "Feature", "properties": { "FEAT_TYPE": "Wallow", "UFI": 2985756, "Q_INFO": 884, "DATASET_ID": 179, "GAZ_ID": 0, "NAME": "B2", "DB_DATE_CR": "2011-05-04" }, "geometry": { "type": "Point", "coordinates": [ 110.523407057064532, -66.46402831351142 ] } },
+{ "type": "Feature", "properties": { "FEAT_TYPE": "Wallow", "UFI": 2985757, "Q_INFO": 884, "DATASET_ID": 179, "GAZ_ID": 0, "NAME": "B3", "DB_DATE_CR": "2011-05-04" }, "geometry": { "type": "Point", "coordinates": [ 110.525778993743629, -66.456118394946486 ] } },
+{ "type": "Feature", "properties": { "FEAT_TYPE": "Wallow", "UFI": 2985758, "Q_INFO": 884, "DATASET_ID": 179, "GAZ_ID": 0, "NAME": "B4", "DB_DATE_CR": "2011-05-04" }, "geometry": { "type": "Point", "coordinates": [ 110.537680928917936, -66.483996322113853 ] } },
+{ "type": "Feature", "properties": { "FEAT_TYPE": "Wallow", "UFI": 2985759, "Q_INFO": 884, "DATASET_ID": 179, "GAZ_ID": 0, "NAME": "P1", "DB_DATE_CR": "2011-05-04" }, "geometry": { "type": "Point", "coordinates": [ 110.52436599572556, -66.44725494637666 ] } },
+{ "type": "Feature", "properties": { "FEAT_TYPE": "Wallow", "UFI": 2985760, "Q_INFO": 884, "DATASET_ID": 179, "GAZ_ID": 0, "NAME": "P2", "DB_DATE_CR": "2011-05-04" }, "geometry": { "type": "Point", "coordinates": [ 110.518326401149849, -66.453426651393912 ] } },
+{ "type": "Feature", "properties": { "FEAT_TYPE": "Wallow", "UFI": 2985761, "Q_INFO": 884, "DATASET_ID": 179, "GAZ_ID": 0, "NAME": "P3", "DB_DATE_CR": "2011-05-04" }, "geometry": { "type": "Point", "coordinates": [ 110.511293541689767, -66.448277717889852 ] } },
+{ "type": "Feature", "properties": { "FEAT_TYPE": "Wallow", "UFI": 2985762, "Q_INFO": 884, "DATASET_ID": 179, "GAZ_ID": 0, "NAME": "P4", "DB_DATE_CR": "2011-05-04" }, "geometry": { "type": "Point", "coordinates": [ 110.504212914692644, -66.44625027511853 ] } },
+{ "type": "Feature", "properties": { "FEAT_TYPE": "Wallow", "UFI": 2985763, "Q_INFO": 884, "DATASET_ID": 179, "GAZ_ID": 0, "NAME": "P5", "DB_DATE_CR": "2011-05-04" }, "geometry": { "type": "Point", "coordinates": [ 110.490714515601297, -66.448898267462866 ] } },
+{ "type": "Feature", "properties": { "FEAT_TYPE": "Wallow", "UFI": 2985764, "Q_INFO": 884, "DATASET_ID": 179, "GAZ_ID": 0, "NAME": "P6", "DB_DATE_CR": "2011-05-04" }, "geometry": { "type": "Point", "coordinates": [ 110.489226492561485, -66.455573245252566 ] } },
+{ "type": "Feature", "properties": { "FEAT_TYPE": "Wallow", "UFI": 2985765, "Q_INFO": 884, "DATASET_ID": 179, "GAZ_ID": 0, "NAME": "P7", "DB_DATE_CR": "2011-05-04" }, "geometry": { "type": "Point", "coordinates": [ 110.507289958053462, -66.446994688271303 ] } },
+{ "type": "Feature", "properties": { "FEAT_TYPE": "Wallow", "UFI": 2985766, "Q_INFO": 884, "DATASET_ID": 179, "GAZ_ID": 0, "NAME": "P8", "DB_DATE_CR": "2011-05-04" }, "geometry": { "type": "Point", "coordinates": [ 110.499210603964812, -66.452302989701593 ] } },
+{ "type": "Feature", "properties": { "FEAT_TYPE": "Wallow", "UFI": 2985767, "Q_INFO": 884, "DATASET_ID": 179, "GAZ_ID": 0, "NAME": "P9", "DB_DATE_CR": "2011-05-04" }, "geometry": { "type": "Point", "coordinates": [ 110.520767097377771, -66.450733783269257 ] } }
+]
+}
