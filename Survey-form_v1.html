@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert Elicitation Survey: Multi-Action Conservation Planning in Windmill Islands</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .question {
+            margin-bottom: 15px;
+        }
+
+        .spatial-tool {
+            background-color: #e8f4fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        .confidence {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .pressure-matrix {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 5px;
+            margin: 10px 0;
+        }
+
+        .matrix-header {
+            font-weight: bold;
+            text-align: center;
+        }
+
+        input[type="number"] {
+            width: 80px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 80px;
+        }
+
+        .scale-info {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align: center;">Expert Elicitation Survey:</h1>
+    <h1 style="text-align: center;">Multi-Action Conservation Planning in Windmill Islands</h1>
+
+    <div class="section">
+        <h2>Expert Information</h2>
+        <div class="question">
+            <label>Name:</label><br>
+            <input type="text" name="expert_name" style="width: 300px;">
+        </div>
+        <div class="question">
+            <label>Institution/Organization:</label><br>
+            <input type="text" name="institution" style="width: 300px;">
+        </div>
+        <div class="question">
+            <label>Area of expertise (check all that apply):</label><br>
+            <input type="checkbox" name="expertise" value="marine_ecology"> Marine Ecology<br>
+            <input type="checkbox" name="expertise" value="terrestrial_ecology"> Terrestrial Ecology<br>
+            <input type="checkbox" name="expertise" value="conservation_planning"> Conservation Planning<br>
+            <input type="checkbox" name="expertise" value="pressure_assessment"> Pressure Assessment<br>
+            <input type="checkbox" name="expertise" value="spatial_analysis"> Spatial Analysis<br>
+            <input type="checkbox" name="expertise" value="antarctic_ecology"> Antarctic Ecology<br>
+            <input type="checkbox" name="expertise" value="other"> Other: <input type="text" name="expertise_other">
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Conservation Features</h2>
+        <div class="question">
+            <label>List the key species/habitats to conserve (one per line):</label><br>
+            <textarea name="conservation_features" placeholder="e.g.,
+Adélie penguin breeding sites
+Moss beds (Bryum argenteum)
+Lichen communities
+Ice-free areas
+Freshwater lakes"></textarea>
+        </div>
+
+        <div class="question">
+            <label>For each feature, what percentage should be conserved? (Recovery targets)</label><br>
+            <div class="scale-info">0.1 = 10%, 0.3 = 30%, 0.5 = 50%, etc.</div>
+            <textarea name="conservation_targets" placeholder="Feature 1: 0.3 (30% target)
+Feature 2: 0.2 (20% target)
+..."></textarea>
+        </div>
+
+        <div class="spatial-tool">
+            <h3>🗺️ Feature Distribution Mapping (IceCon)</h3>
+            <p>Use <a href="https://wwen03.github.io/IceCons/" target="_blank">IceCon</a> to map where each conservation
+                feature occurs:</p>
+            <ol>
+                <li>For each feature, mark the planning units where it occurs</li>
+                <li>Assign abundance values (0-1 scale)</li>
+                <li>Export the feature distribution data</li>
+            </ol>
+            <p><strong>Upload feature distribution file from IceCon:</strong></p>
+            <input type="file" name="feature_distribution_file" accept=".geojson">
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Pressures Assessment</h2>
+        <div class="question">
+            <label>Identify the main pressures in your study area (check all that apply):</label><br>
+            <input type="checkbox" name="pressures" value="reseach_trampling"> Research trampling<br>
+            <input type="checkbox" name="pressures" value="invasive_species"> Invasive species introduction<br>
+            <input type="checkbox" name="pressures" value="fuel_spills"> Fuel spills<br>
+            <input type="checkbox" name="pressures" value="infrastructure"> Infrastructure development<br>
+            <input type="checkbox" name="pressures" value="climate_change"> Climate change (warming/drying)<br>
+            <input type="checkbox" name="pressures" value="pollution"> Pollution (waste, microplastics)<br>
+            <input type="checkbox" name="pressures" value="aircraft_disturbance"> Aircraft disturbance<br>
+            <input type="checkbox" name="pressures" value="other"> Other: <input type="text" name="pressures_other">
+        </div>
+
+        <div class="spatial-tool">
+            <h3>🗺️ Pressure Distribution Mapping (IceCon)</h3>
+            <p>Use <a href="https://wwen03.github.io/IceCons/" target="_blank">IceCon</a> to map pressure intensities:
+            </p>
+            <ol>
+                <li>For each pressure, map its spatial distribution</li>
+                <li>Use intensity scale: 0 = no pressure, 1 = maximum pressure</li>
+                <li>Consider proximity to stations, flight paths, tourist routes</li>
+                <li>Export pressure distribution data</li>
+            </ol>
+            <p><strong>Upload pressure distribution file from IceCon:</strong></p>
+            <input type="file" name="pressure_distribution_file" accept=".geojson">
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Management Actions</h2>
+        <div class="question">
+            <label>For each pressure, specify the management action and its cost:</label><br>
+            <table id="management-actions-table" style="width: 100%; border-collapse: collapse;">
+                <tr>
+                    <th style="border: 1px solid #ddd; padding: 8px;">Pressure</th>
+                    <th style="border: 1px solid #ddd; padding: 8px;">Management Action</th>
+                    <th style="border: 1px solid #ddd; padding: 8px;">Cost per Planning Unit (AUD)</th>
+                    <th style="border: 1px solid #ddd; padding: 8px;">Confidence (1-5)</th>
+                    <th style="border: 1px solid #ddd; padding: 8px;">Action</th>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;">Research trampling</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><input type="text"
+                            placeholder="e.g., Install boardwalks, restrict access"></td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><input type="number" step="0.01"></td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><input type="range" min="1" max="5" value="3">
+                    </td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><button type="button" onclick="removeRow(this)"
+                            style="background-color: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">Remove</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;">Invasive species introduction</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><input type="text"
+                            placeholder="e.g., Biosecurity measures, monitoring"></td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><input type="number" step="0.01"></td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><input type="range" min="1" max="5" value="3">
+                    </td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><button type="button" onclick="removeRow(this)"
+                            style="background-color: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">Remove</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;">Fuel spills</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><input type="text"
+                            placeholder="e.g., Improved fuel handling, cleanup"></td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><input type="number" step="0.01"></td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><input type="range" min="1" max="5" value="3">
+                    </td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><button type="button" onclick="removeRow(this)"
+                            style="background-color: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">Remove</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;">Infrastructure development</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><input type="text"
+                            placeholder="e.g., Minimize footprint, restoration"></td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><input type="number" step="0.01"></td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><input type="range" min="1" max="5" value="3">
+                    </td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><button type="button" onclick="removeRow(this)"
+                            style="background-color: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">Remove</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;">Climate change (warming/drying)</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><input type="text"
+                            placeholder="e.g., Microclimate management, shading"></td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><input type="number" step="0.01"></td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><input type="range" min="1" max="5" value="3">
+                    </td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><button type="button" onclick="removeRow(this)"
+                            style="background-color: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">Remove</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;">Pollution (waste, microplastics)</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><input type="text"
+                            placeholder="e.g., Waste management, cleanup programs"></td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><input type="number" step="0.01"></td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><input type="range" min="1" max="5" value="3">
+                    </td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><button type="button" onclick="removeRow(this)"
+                            style="background-color: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">Remove</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;">Aircraft disturbance</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><input type="text"
+                            placeholder="e.g., Flight path restrictions, altitude limits"></td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><input type="number" step="0.01"></td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><input type="range" min="1" max="5" value="3">
+                    </td>
+                    <td style="border: 1px solid #ddd; padding: 8px;"><button type="button" onclick="removeRow(this)"
+                            style="background-color: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">Remove</button>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <button type="button" id="add-action-row"
+                style="background-color: #28a745; color: white; padding: 8px 16px; border: none; border-radius: 5px; cursor: pointer; font-size: 14px;">+
+                Add Another Management Action</button>
+        </div>
+
+        <script>
+            // Function to add a new management action row
+            document.getElementById('add-action-row').addEventListener('click', function () {
+                const table = document.getElementById('management-actions-table');
+                const newRow = table.insertRow(-1);
+
+                newRow.innerHTML = `
+                <td style="border: 1px solid #ddd; padding: 8px;"><input type="text" placeholder="Enter pressures name" style="width: 100%; border: none; outline: none;"></td>
+                <td style="border: 1px solid #ddd; padding: 8px;"><input type="text" placeholder="Describe management action" style="width: 100%; border: none; outline: none;"></td>
+                <td style="border: 1px solid #ddd; padding: 8px;"><input type="number" step="0.01" style="width: 100%; border: none; outline: none;"></td>
+                <td style="border: 1px solid #ddd; padding: 8px;"><input type="range" min="1" max="5" value="3" style="width: 100%;"></td>
+                <td style="border: 1px solid #ddd; padding: 8px;"><button type="button" onclick="removeRow(this)" style="background-color: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">Remove</button></td>
+            `;
+            });
+
+            // Function to remove a management action row
+            function removeRow(button) {
+                const table = document.getElementById('management-actions-table');
+                const row = button.closest('tr');
+
+                // Don't allow removing if there's only the header row and one data row left
+                if (table.rows.length > 2) {
+                    row.remove();
+                } else {
+                    alert('At least one management action must remain.');
+                }
+            }
+        </script>
+    </div>
+
+    <div class="section">
+        <h2>Feature-Pressures Sensitivity Matrix</h2>
+        <div class="question">
+            <label>How sensitive is each conservation feature to each pressure?</label><br>
+            <div class="scale-info">Scale: 0 = not sensitive, 0.5 = moderately sensitive, 1 = highly sensitive</div>
+            <p><strong>Dynamic matrix (add/remove features as needed):</strong></p>
+            <div style="margin-bottom: 10px;">
+                <button type="button" id="add-feature-btn"
+                    style="background-color: #17a2b8; color: white; padding: 6px 12px; border: none; border-radius: 3px; cursor: pointer; margin-right: 10px; font-size: 12px;">+
+                    Add Feature</button>
+            </div>
+            <table id="sensitivity-matrix" style="width: 100%; border-collapse: collapse; font-size: 0.9em;">
+                <thead>
+                    <tr id="pressure-header-row">
+                        <th style="border: 1px solid #ddd; padding: 5px; background-color: #f8f9fa;">Feature/Pressure
+                        </th>
+                        <th style="border: 1px solid #ddd; padding: 5px; background-color: #f8f9fa;">Research Trampling
+                        </th>
+                        <th style="border: 1px solid #ddd; padding: 5px; background-color: #f8f9fa;">Invasive Species
+                        </th>
+                        <th style="border: 1px solid #ddd; padding: 5px; background-color: #f8f9fa;">Fuel Spills</th>
+                        <th style="border: 1px solid #ddd; padding: 5px; background-color: #f8f9fa;">Infrastructure</th>
+                        <th style="border: 1px solid #ddd; padding: 5px; background-color: #f8f9fa;">Climate Change</th>
+                        <th style="border: 1px solid #ddd; padding: 5px; background-color: #f8f9fa;">Pollution</th>
+                        <th style="border: 1px solid #ddd; padding: 5px; background-color: #f8f9fa;">Aircraft
+                            Disturbance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 5px; background-color: #f8f9fa;">
+                            Penguin colonies
+                            <button type="button" onclick="removeFeatureRow(this)"
+                                style="background-color: #dc3545; color: white; border: none; padding: 2px 5px; border-radius: 2px; cursor: pointer; font-size: 10px; margin-left: 5px;">×</button>
+                        </td>
+                        <td style="border: 1px solid #ddd; padding: 5px;"><input type="number" min="0" max="1"
+                                step="0.1" value="0.8" style="width: 100%; border: none; outline: none;"></td>
+                        <td style="border: 1px solid #ddd; padding: 5px;"><input type="number" min="0" max="1"
+                                step="0.1" value="0.3" style="width: 100%; border: none; outline: none;"></td>
+                        <td style="border: 1px solid #ddd; padding: 5px;"><input type="number" min="0" max="1"
+                                step="0.1" value="0.9" style="width: 100%; border: none; outline: none;"></td>
+                        <td style="border: 1px solid #ddd; padding: 5px;"><input type="number" min="0" max="1"
+                                step="0.1" value="0.4" style="width: 100%; border: none; outline: none;"></td>
+                        <td style="border: 1px solid #ddd; padding: 5px;"><input type="number" min="0" max="1"
+                                step="0.1" value="0.6" style="width: 100%; border: none; outline: none;"></td>
+                        <td style="border: 1px solid #ddd; padding: 5px;"><input type="number" min="0" max="1"
+                                step="0.1" value="0.2" style="width: 100%; border: none; outline: none;"></td>
+                        <td style="border: 1px solid #ddd; padding: 5px;"><input type="number" min="0" max="1"
+                                step="0.1" value="0.7" style="width: 100%; border: none; outline: none;"></td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 5px; background-color: #f8f9fa;">
+                            Moss beds
+                            <button type="button" onclick="removeFeatureRow(this)"
+                                style="background-color: #dc3545; color: white; border: none; padding: 2px 5px; border-radius: 2px; cursor: pointer; font-size: 10px; margin-left: 5px;">×</button>
+                        </td>
+                        <td style="border: 1px solid #ddd; padding: 5px;"><input type="number" min="0" max="1"
+                                step="0.1" value="0.9" style="width: 100%; border: none; outline: none;"></td>
+                        <td style="border: 1px solid #ddd; padding: 5px;"><input type="number" min="0" max="1"
+                                step="0.1" value="0.7" style="width: 100%; border: none; outline: none;"></td>
+                        <td style="border: 1px solid #ddd; padding: 5px;"><input type="number" min="0" max="1"
+                                step="0.1" value="0.8" style="width: 100%; border: none; outline: none;"></td>
+                        <td style="border: 1px solid #ddd; padding: 5px;"><input type="number" min="0" max="1"
+                                step="0.1" value="0.6" style="width: 100%; border: none; outline: none;"></td>
+                        <td style="border: 1px solid #ddd; padding: 5px;"><input type="number" min="0" max="1"
+                                step="0.1" value="0.9" style="width: 100%; border: none; outline: none;"></td>
+                        <td style="border: 1px solid #ddd; padding: 5px;"><input type="number" min="0" max="1"
+                                step="0.1" value="0.5" style="width: 100%; border: none; outline: none;"></td>
+                        <td style="border: 1px solid #ddd; padding: 5px;"><input type="number" min="0" max="1"
+                                step="0.1" value="0.2" style="width: 100%; border: none; outline: none;"></td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 5px; background-color: #f8f9fa;">
+                            Lichen communities
+                            <button type="button" onclick="removeFeatureRow(this)"
+                                style="background-color: #dc3545; color: white; border: none; padding: 2px 5px; border-radius: 2px; cursor: pointer; font-size: 10px; margin-left: 5px;">×</button>
+                        </td>
+                        <td style="border: 1px solid #ddd; padding: 5px;"><input type="number" min="0" max="1"
+                                step="0.1" value="0.7" style="width: 100%; border: none; outline: none;"></td>
+                        <td style="border: 1px solid #ddd; padding: 5px;"><input type="number" min="0" max="1"
+                                step="0.1" value="0.6" style="width: 100%; border: none; outline: none;"></td>
+                        <td style="border: 1px solid #ddd; padding: 5px;"><input type="number" min="0" max="1"
+                                step="0.1" value="0.5" style="width: 100%; border: none; outline: none;"></td>
+                        <td style="border: 1px solid #ddd; padding: 5px;"><input type="number" min="0" max="1"
+                                step="0.1" value="0.4" style="width: 100%; border: none; outline: none;"></td>
+                        <td style="border: 1px solid #ddd; padding: 5px;"><input type="number" min="0" max="1"
+                                step="0.1" value="0.8" style="width: 100%; border: none; outline: none;"></td>
+                        <td style="border: 1px solid #ddd; padding: 5px;"><input type="number" min="0" max="1"
+                                step="0.1" value="0.3" style="width: 100%; border: none; outline: none;"></td>
+                        <td style="border: 1px solid #ddd; padding: 5px;"><input type="number" min="0" max="1"
+                                step="0.1" value="0.1" style="width: 100%; border: none; outline: none;"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="question">
+            <label>Overall confidence in sensitivity assessments:</label><br>
+            <input type="range" name="sensitivity_confidence" min="1" max="5" value="3">
+            <span>(1=Very Uncertain, 5=Very Certain)</span>
+        </div>
+
+        <script>
+            // Function to add a new feature row
+            document.getElementById('add-feature-btn').addEventListener('click', function () {
+                const table = document.getElementById('sensitivity-matrix');
+                const tbody = table.querySelector('tbody');
+                const headerRow = document.getElementById('pressure-header-row');
+                const pressureCount = headerRow.cells.length - 1; // Exclude first column
+
+                const newRow = tbody.insertRow(-1);
+
+                // First cell with feature name and remove button
+                const featureCell = newRow.insertCell(0);
+                featureCell.style.cssText = "border: 1px solid #ddd; padding: 5px; background-color: #f8f9fa;";
+                featureCell.innerHTML = `
+                <input type="text" placeholder="Enter feature name" value="New Feature" style="width: 120px; border: none; outline: none; background: transparent;">
+                <button type="button" onclick="removeFeatureRow(this)" style="background-color: #dc3545; color: white; border: none; padding: 2px 5px; border-radius: 2px; cursor: pointer; font-size: 10px; margin-left: 5px;">×</button>
+            `;
+
+                // Add sensitivity input cells for each pressure
+                for (let i = 0; i < pressureCount; i++) {
+                    const cell = newRow.insertCell(-1);
+                    cell.style.cssText = "border: 1px solid #ddd; padding: 5px;";
+                    cell.innerHTML = '<input type="number" min="0" max="1" step="0.1" value="0.5" style="width: 100%; border: none; outline: none;">';
+                }
+
+                // Focus on the new feature name input for immediate editing
+                const newInput = featureCell.querySelector('input[type="text"]');
+                newInput.focus();
+                newInput.select();
+            });
+
+            // Function to remove a feature row
+            function removeFeatureRow(button) {
+                const table = document.getElementById('sensitivity-matrix');
+                const tbody = table.querySelector('tbody');
+                const row = button.closest('tr');
+
+                // Don't allow removing if there's only one feature row left
+                if (tbody.rows.length > 1) {
+                    row.remove();
+                } else {
+                    alert('At least one conservation feature must remain.');
+                }
+            }
+        </script>
+    </div>
+
+    <div class="section">
+        <h2>Spatial Connectivity</h2>
+        <div class="question">
+            <label>How important is spatial connectivity between ASPA?</label><br>
+            <input type="radio" name="connectivity_importance" value="low"> Low - individual sites can function
+            independently<br>
+            <input type="radio" name="connectivity_importance" value="medium"> Medium - some connectivity beneficial<br>
+            <input type="radio" name="connectivity_importance" value="high"> High - connectivity essential for
+            conservation goals<br>
+        </div>
+
+        <div class="spatial-tool">
+            <h3>🗺️ Connectivity Analysis (IceCon)</h3>
+            <p>Use <a href="https://wwen03.github.io/IceCons/" target="_blank">IceCon</a> to identify connectivity
+                corridors:</p>
+            <ol>
+                <li>Map and Identify natural corridors (e.g., valleys, coastlines)</li>
+                <li>Export boundary/adjacency data</li>
+            </ol>
+            <p><strong>Upload boundary data file from IceCon:</strong></p>
+            <input type="file" name="boundary_file" accept=".csv,.xlsx">
+        </div>
+
+        <div class="question">
+            <label>Connectivity penalty value (BLM):</label><br>
+            <input type="number" name="blm_value" step="0.01" value="0.01">
+            <div class="scale-info">Higher values = more clustered solutions. Range: 0.001-10</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Action Effectiveness and Uncertainty</h2>
+        <div class="question">
+            <label>How effective are management actions at reducing pressures? (0-1 scale)</label><br>
+            <div class="scale-info">0 = no effect, 0.5 = moderate reduction, 1 = complete elimination</div>
+            <textarea name="action_effectiveness" placeholder="Trampling management: 0.8 (reduces 80% of impact)
+Invasive species management: 0.9 (prevents 90% of establishment)
+..."></textarea>
+        </div>
+
+        <div class="question">
+            <label>Do conservation benefits show diminishing returns?</label><br>
+            <input type="radio" name="benefit_curve" value="linear"> Linear - each action provides proportional
+            benefit<br>
+            <input type="radio" name="benefit_curve" value="concave"> Concave - diminishing returns (first actions most
+            important)<br>
+            <input type="radio" name="benefit_curve" value="convex"> Convex - increasing returns (multiple actions have
+            synergy)<br>
+        </div>
+
+        <div class="question">
+            <label>Curve parameter (if non-linear):</label><br>
+            <input type="number" name="curve_parameter" step="0.1" value="2.0">
+            <div class="scale-info">Values > 1 = concave (diminishing returns), Values < 1=convex (synergy)</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Budget and Implementation</h2>
+            <div class="question">
+                <label>Available conservation budget (AUD):</label><br>
+                <input type="number" name="total_budget" step="1000">
+            </div>
+
+            <div class="question">
+                <label>Budget time frame:</label><br>
+                <input type="radio" name="budget_timeframe" value="annual"> Annual<br>
+                <input type="radio" name="budget_timeframe" value="5year"> 5-year program<br>
+                <input type="radio" name="budget_timeframe" value="10year"> 10-year program<br>
+                <input type="radio" name="budget_timeframe" value="other"> Other: <input type="text"
+                    name="budget_timeframe_other">
+            </div>
+
+            <div class="question">
+                <label>Implementation constraints:</label><br>
+                <textarea name="implementation_constraints"
+                    placeholder="e.g., Seasonal access limitations, permit requirements, logistical challenges..."></textarea>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Additional Information</h2>
+            <div class="question">
+                <label>Any additional comments or considerations:</label><br>
+                <textarea name="additional_comments"
+                    placeholder="e.g., Stakeholder concerns, existing conservation measures, data uncertainties..."></textarea>
+            </div>
+
+            <div class="question">
+                <label>Would you be available for follow-up questions?</label><br>
+                <input type="radio" name="follow_up" value="yes"> Yes<br>
+                <input type="radio" name="follow_up" value="no"> No<br>
+            </div>
+
+            <div class="question">
+                <label>Preferred contact method:</label><br>
+                <input type="radio" name="contact_method" value="email"> Email<br>
+                <input type="radio" name="contact_method" value="phone"> Phone<br>
+                <input type="radio" name="contact_method" value="video"> Video call<br>
+            </div>
+        </div>
+
+        <div class="section">
+            <button type="submit"
+                style="background-color: #007cba; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">Submit
+                Expert Assessment</button>
+        </div>
+</body>
+
+</html>
