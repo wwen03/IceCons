@@ -1,3 +1,3 @@
 # IceCons
-This tool is intended solely for scientific research and expert feedback regarding conservation features and potential threats in Windmill Islands. The information presented herein is preliminary, subject to ongoing validation, and should not be interpreted as legally binding or as official policy.
+This tool supports research on climate-smart conservation planning across the Vestfold Hills, Bunger Hills and Windmill Islands, including how spatial priorities respond to uncertainty in climate projections and input data. The information shown is preliminary and subject to ongoing validation. It does not represent official policy and is not legally binding. 
 
